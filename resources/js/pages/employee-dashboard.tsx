@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageTemplate } from '@/components/page-template';
-import { RefreshCw, Bell, Users } from 'lucide-react';
+import { RefreshCw, Bell, Users, FileText } from 'lucide-react'; // Added FileText import
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useTranslation } from 'react-i18next';
@@ -228,6 +228,56 @@ export default function EmployeeDashboard({ dashboardData }: { dashboardData: Em
             </CardContent>
           </Card>
         </div>
+
+        {/* CLAIM FORM CARD - NEW ADDITION */}
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <FileText className="h-5 w-5 text-blue-600" />
+                  <h3 className="text-lg font-semibold">Claim Form</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">
+                  Submit mileage, travel, meal or other expense claims with proof upload
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="/claims/create"
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-md text-sm font-medium transition-colors shadow-sm"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    New Claim
+                  </a>
+                  <a
+                    href="/claims"
+                    className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 px-4 py-2.5 rounded-md text-sm font-medium transition-colors"
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    View My Claims
+                  </a>
+                </div>
+                <div className="mt-3 pt-3 border-t border-gray-100">
+                  <p className="text-xs text-gray-500">
+                    <span className="font-medium">Features:</span> KM tracking • RM amount • File upload (JPG, PNG, PDF) • Multiple claim types
+                  </p>
+                </div>
+              </div>
+              <div className="hidden md:block ml-6">
+                <div className="rounded-full bg-blue-50 p-4">
+                  <svg className="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        {/* END CLAIM FORM CARD */}
 
         {/* Clock In/Out Card */}
         <Card>

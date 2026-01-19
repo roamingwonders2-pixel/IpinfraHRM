@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
         except: [
             'install/*',
             'update/*',
-            'cashfree/create-session', 
+            'cashfree/create-session',
             'cashfree/webhook',
             'ozow/create-payment',
             'payments/easebuzz/success',

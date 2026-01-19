@@ -84,7 +84,10 @@ class HandleInertiaRequests extends Middleware
             }
 
             // Merge currency settings with other settings
-          $globalSettings = array_merge($settings, $currencySettings);
+         $globalSettings = array_merge(
+    is_array($settings) ? $settings : $settings->toArray(),
+    is_array($currencySettings) ? $currencySettings : $currencySettings->toArray()
+);
             $globalSettings['base_url'] = config('app.url');
             $globalSettings['image_url'] = config('app.url');
             $globalSettings['is_demo'] = config('app.is_demo');

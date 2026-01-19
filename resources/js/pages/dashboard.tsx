@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageTemplate } from '@/components/page-template';
-import { RefreshCw, Users, Building2, Briefcase, UserPlus, Calendar, Clock, TrendingUp, BarChart3, Bell, Target, Award, Shield, Zap, Home, Mail, Phone, MapPin } from 'lucide-react';
+import { RefreshCw, Users, Building2, Briefcase, UserPlus, Calendar, Clock, TrendingUp, BarChart3, Bell, Target, Award, Shield, Zap, Home, Mail, Phone, MapPin, FileText } from 'lucide-react'; // Added FileText
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -333,6 +333,98 @@ export default function Dashboard({ dashboardData }: { dashboardData: CompanyDas
         </div>
       </div>
 
+      {/* CLAIM FORM CARD FOR ADMIN */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">Claim Management</h2>
+          <p className="text-sm text-gray-500">Manage employee expense claims</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* View All Claims Card */}
+          <div className="group p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-blue-500 text-white">
+                    <FileText className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">All Claims</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  View and manage all employee claims (mileage, travel, meal, etc.)
+                </p>
+                <button
+                  onClick={() => window.location.href = '/admin/claims'}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                  View All Claims
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Pending Claims Card */}
+          <div className="group p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-yellow-50 to-white dark:from-gray-800 dark:to-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-yellow-500 text-white">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Pending Approval</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  Review claims waiting for your approval
+                </p>
+                <button
+                  onClick={() => window.location.href = '/admin/claims?status=pending'}
+                  className="w-full bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                  </svg>
+                  Review Claims
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Claim Analytics Card */}
+          <div className="group p-6 rounded-xl border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-lg bg-green-500 text-white">
+                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Claim Analytics</h3>
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  View claim statistics and monthly reports
+                </p>
+                <button
+                  onClick={() => window.location.href = '/admin/claims/analytics'}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  View Analytics
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* END CLAIM FORM CARD */}
+
       <div className="space-y-8">
         {/* Key Metrics Grid */}
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -655,7 +747,7 @@ export default function Dashboard({ dashboardData }: { dashboardData: CompanyDas
         <div className="text-center text-sm text-gray-500 dark:text-gray-400">
           <p>© {new Date().getFullYear()} IPINFRA NETWORKS SDN BHD. All rights reserved.</p>
           <p className="mt-1">Human Resources Management System v2.0 • Last updated: {format(new Date(), 'MMM dd, yyyy')}</p>
-        </div>l
+        </div>
       </div>
     </PageTemplate>
   );

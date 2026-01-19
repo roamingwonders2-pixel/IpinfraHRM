@@ -20,7 +20,7 @@ interface ExtendedSidebarSettings extends SidebarSettings {
 // Default sidebar settings with style
 const DEFAULT_EXTENDED_SETTINGS: ExtendedSidebarSettings = {
   variant: 'inset',
-  collapsible: 'icon',
+  collapsible: 'none',
   style: 'plain'
 };
 
@@ -45,7 +45,7 @@ const setCookie = (name: string, value: string, days = 365) => {
 // Get extended sidebar settings from cookies or database
 const getExtendedSidebarSettings = (): ExtendedSidebarSettings => {
   const isDemo = (window as any).page?.props?.globalSettings?.is_demo || false;
-  
+
   if (isDemo) {
     // In demo mode, use cookies
     try {
@@ -70,7 +70,7 @@ const getExtendedSidebarSettings = (): ExtendedSidebarSettings => {
 
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   const [settings, setSettings] = useState<ExtendedSidebarSettings>(() => getExtendedSidebarSettings());
-  
+
   // Update settings when page props change (for non-demo mode)
   useEffect(() => {
     const isDemo = (window as any).page?.props?.globalSettings?.is_demo || false;
@@ -98,7 +98,7 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   // Save sidebar settings to cookies (demo mode only)
   const saveSidebarSettings = () => {
     const isDemo = (window as any).page?.props?.globalSettings?.is_demo || false;
-    
+
     if (isDemo) {
       setCookie('sidebarSettings', JSON.stringify(settings));
     }
@@ -122,8 +122,8 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <SidebarContext.Provider value={{ 
-      variant: settings.variant, 
+    <SidebarContext.Provider value={{
+      variant: settings.variant,
       collapsible: settings.collapsible,
       style: settings.style,
       updateVariant,

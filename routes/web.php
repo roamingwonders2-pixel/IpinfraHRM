@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PlanController;
@@ -1190,3 +1190,19 @@ Route::post('payments/easebuzz/callback', [EasebuzzPaymentController::class, 'ca
 // Cookie consent routes
 Route::post('/cookie-consent/store', [CookieConsentController::class, 'store'])->name('cookie.consent.store');
 Route::get('/cookie-consent/download', [CookieConsentController::class, 'download'])->name('cookie.consent.download');
+use App\Http\Controllers\ClaimController;
+
+// Claim Management Routes
+Route::middleware(['auth'])->group(function () {
+    // Employee routes
+    Route::get('/claims', [ClaimController::class, 'index'])->name('claims.index');
+    Route::get('/claims/create', [ClaimController::class, 'create'])->name('claims.create');
+    Route::post('/claims', [ClaimController::class, 'store'])->name('claims.store');
+    Route::get('/claims/{claim}', [ClaimController::class, 'show'])->name('claims.show');
+    Route::get('/claims/{claim}/download', [ClaimController::class, 'downloadProof'])->name('claims.download');
+
+    // Admin routes
+    Route::get('/admin/claims', [ClaimController::class, 'adminIndex'])->name('claims.admin');
+    Route::post('/claims/{claim}/approve', [ClaimController::class, 'approve'])->name('claims.approve');
+    Route::post('/claims/{claim}/reject', [ClaimController::class, 'reject'])->name('claims.reject');
+});
