@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { PageTemplate } from '@/components/page-template';
 import { RefreshCw, Users, Building2, Briefcase, UserPlus, Calendar, Clock, TrendingUp, BarChart3, Bell, Target, Award, Shield, Zap, Home, Mail, Phone, MapPin, FileText } from 'lucide-react'; // Added FileText
@@ -8,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 import { usePage } from '@inertiajs/react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, AreaChart, Area, LineChart, Line } from 'recharts';
 import { format } from 'date-fns';
+import AppLayout from '@/Layouts/app-layout';  //
+
 
 interface CompanyDashboardData {
   stats: {
@@ -206,6 +209,7 @@ export default function Dashboard({ dashboardData }: { dashboardData: CompanyDas
                   <p className="text-xl text-blue-100 font-medium">
                     Human Resources & Payroll Management System
                   </p>
+
                   <div className="flex items-center space-x-4 mt-3 text-blue-100">
                     <div className="flex items-center space-x-2">
                       <MapPin className="h-4 w-4" />
